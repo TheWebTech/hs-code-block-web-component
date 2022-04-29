@@ -1,0 +1,32 @@
+{{ require_js(get_asset_url('../../js/prism.js')) }}
+{{ require_css(get_asset_url('../../css/components/prism.css')) }}
+{{ require_js(get_asset_url('../../js/code-block.js'),{"type":"module"}) }}
+{#{{ require_css(get_asset_url('../../css/code-blocks.css') )}}#}
+{%- set langMap  =
+  {
+    "css": "CSS",
+    "html": "HTML",
+    "jinja2": "HubL",
+    "js": "JavaScript",
+    "json": "JSON",
+    "yaml": "YAML",
+    "graphql": "GraphQL",
+    "shell": "Shell script"
+  }
+-%}
+{%- set tabLang =  langMap[module.language] -%}
+<div class="developers-code-block {{ module.showLangTab ? 'developers-code-block--show-lang' : '' }}">
+  <div class="developers-code-block__tabs">
+    <div class="developers-code-block__tablist {{ !module.showLangTab ? 'developers-code-block__tablist--hidden' : '' }}">
+      <span class="developers-code-block__tabs__single-lang">{{ tabLang }}</button>
+    </div>
+    <pre class="{{ module.useLineNumbers ? 'line-numbers' : null }}"><code class="language-{{ module.language }}">{{ module.code_snippet|escape|escape_jinjava }}</code></pre>
+  </div>
+
+</div>
+
+<code-block data-line-numbers="{{ module.useLineNumbers }}">
+  <code-tab data-language="{{ tabLang }}" data-escaped="true">
+    {{ module.code_snippet|escape|escape_jinjava }}
+  </code-tab>
+</code-block>

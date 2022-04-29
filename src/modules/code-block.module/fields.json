@@ -1,0 +1,48 @@
+[
+  {
+    "default": "",
+    "label": "Code snippet",
+    "locked": false,
+    "name": "code_snippet",
+    "allow_new_line": true,
+    "required": false,
+    "sortable": false,
+    "type": "text",
+    "validation_regex": ""
+  },
+  {
+    "default": "jinja2",
+    "label": "Language",
+    "locked": false,
+    "name": "language",
+    "required": false,
+    "sortable": false,
+    "display": "select",
+    "choices": [
+      ["css", "CSS"],
+      ["html", "HTML"],
+      ["jinja2", "HubL"],
+      ["js", "JavaScript"],
+      ["json", "JSON"],
+      ["yaml", "YAML"],
+      ["graphql","GraphQL"],
+      ["shell", "Shell script"]
+    ],
+    "type": "choice",
+    "validation_regex": ""
+  },
+  {
+    "default": false,
+    "label": "Use line numbers",
+    "type": "boolean",
+    "name": "useLineNumbers",
+    "id": "useLineNumbers"
+  },
+  {
+    "default": false,
+    "label": "Show selected language label",
+    "type": "boolean",
+    "name": "showLangTab",
+    "id": "showLangTab"
+  }
+]

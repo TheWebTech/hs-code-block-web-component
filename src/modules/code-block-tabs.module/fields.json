@@ -1,0 +1,60 @@
+[ {
+  "id" : "tab",
+  "name" : "tab",
+  "display_width" : null,
+  "label" : "Tabs",
+  "help_text" : "Tabs to show, first tab starts as active tab",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 6,
+    "sorting_label_field" : "tab.language",
+    "default" : 2
+  },
+  "children" : [ {
+    "id" : "tab.code_snippet",
+    "name" : "code_snippet",
+    "display_width" : null,
+    "label" : "Code snippet",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : true,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  }, {
+    "id" : "tab.language",
+    "name" : "language",
+    "display_width" : null,
+    "label" : "Language",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "display" : "select",
+    "choices" : [ [ "css", "CSS" ], [ "html", "HTML" ], [ "jinja2", "HubL" ], [ "js", "JavaScript" ], [ "json", "JSON" ], [ "yaml", "YAML" ], [ "shell", "Shell script" ], [ "php", "PHP" ], [ "node", "Node.js" ], [ "ruby", "Ruby" ], [ "java", "Java" ], [ "py", "Python" ] ],
+    "type" : "choice",
+    "default" : "jinja2"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "code_snippet" : "",
+    "language" : "jinja2"
+  }, {
+    "code_snippet" : "",
+    "language" : "html"
+  } ]
+}, {
+  "id" : "useLineNumbers",
+  "name" : "useLineNumbers",
+  "display_width" : null,
+  "label" : "Use line numbers",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+} ]

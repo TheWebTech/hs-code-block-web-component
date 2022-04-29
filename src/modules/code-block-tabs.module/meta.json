@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "icon" : "window-restore",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 71461418359,
+  "label" : "Code - Multi-syntax",
+  "is_available_for_new_content" : true
+}
