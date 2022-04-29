@@ -13,9 +13,9 @@ This is a wrapper element which contains `<code-tab>` elements. Multiple `<code-
 This is the element that renders the syntax highlighted code itself. This element is designed to be used inside of `<code-block>` elements.
 
 The code tab has three attributes:
-* language - determines the which syntax highlighting is used.
-* label - The label for the tab
-* is-escaped - by default is-escaped is false. This attribute determines whether the module will convert any HTML inside the element to escaped HTML. You should never pass HTML that isn't already escaped. The HTML will be temporarily rendered.
+* `language` - determines the which syntax highlighting is used.
+* `label` - The label for the tab
+* `is-escaped` - by default is-escaped is false. This attribute determines whether the module will convert any HTML inside the element to escaped HTML. You should never pass HTML that isn't already escaped. The HTML will be temporarily rendered.
 
 Each of these attributes are passed as data attributes since these are custom attributes.
 ``` html
