@@ -18,7 +18,7 @@ The code tab has three attributes:
 * is-escaped - by default is-escaped is false. This attribute determines whether the module will convert any HTML inside the element to escaped HTML. You should never pass HTML that isn't already escaped. The HTML will be temporarily rendered.
 
 Each of these attributes are passed as data attributes since these are custom attributes.
-```
+``` html
 <code-tab data-language="HTML" data-is-escaped="false" data-label=" Rendered HTML">
     <h1>Your HTML here. Any HTML or HubL should be escaped</h1>
 </code-tab>
