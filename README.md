@@ -9,9 +9,21 @@ There are two elements in use.
 
 This is a wrapper element which contains `<code-tab>` elements. Multiple `<code-tab>` elements can be placed inside of a code block. This element generates tabs for each of the `<code-tab>` elements placed within it, and handles toggling the visibility of the individual tabs.
 
+#### Code block custom attributes
+The `<code-block>` element has 1 custom attribute.
+* `line-numbers` - Determines if line numbers are shown in the code block. Expects a value of `true` or `false`. Defaults to `true`. 
+
+Attributes are passed as data attributes since these are custom attributes. 
+``` html
+<code-block data-line-numbers="true">
+    ...
+</code-block>
+```
+
 ### Code tab element `<code-tab>`
 This is the element that renders the syntax highlighted code itself. This element is designed to be used inside of `<code-block>` elements.
 
+#### Code tab element custom attributes
 The code tab has three attributes:
 * `language` - determines the which syntax highlighting is used.
 * `label` - The label for the tab
