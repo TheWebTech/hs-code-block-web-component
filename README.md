@@ -1,6 +1,8 @@
 # code-block-web-component
 A code block web component and HubSpot module that leverages the component.
 
+![animation showing code block in action](https://jonm.d.pr/r1HQO5+)
+
 ## How to use the web component
 Wherever you want to place your code block you use HTML. On the page you will need to ensure you are loading the web component's JavaScript file as well.
 
