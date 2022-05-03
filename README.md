@@ -2,9 +2,9 @@
 A code block web component and HubSpot module that leverages the component.
 
 ## How to use the web component
-Wherever you want to place your code block you use HTML.
+Wherever you want to place your code block you use HTML. On the page you will need to ensure you are loading the web component's JavaScript file as well.
 
-There are two elements in use.
+There are two elements in use [Code blocks](#code-block-element-code-block) and [Code tabs](#code-tab-element-code-tab).
 ### Code block element `<code-block>`
 
 This is a wrapper element which contains `<code-tab>` elements. Multiple `<code-tab>` elements can be placed inside of a code block. This element generates tabs for each of the `<code-tab>` elements placed within it, and handles toggling the visibility of the individual tabs.
@@ -36,7 +36,7 @@ Each of these attributes are passed as data attributes since these are custom at
 </code-tab>
 ```
 
-### how they are used together
+### How they are used together
 Example of how you'd use this:
 ``` html
     <code-block data-line-numbers="true">
@@ -46,5 +46,6 @@ Example of how you'd use this:
     </code-block>
 ```
 
-   
+## Use inside custom modules
+In the modules folder we've provided an example plug and play module that uses the web component to create the code blocks. Using module fields the content creator has a nice interface for changing settings in the code block, we can also automatically escape the code for them.
    
