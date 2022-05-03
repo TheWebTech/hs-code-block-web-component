@@ -1,10 +1,5 @@
-{{ require_js(get_asset_url('../../js/prism.js')) }}
-{{ require_css(get_asset_url('../../css/components/prism.css')) }}
 {{ require_js(get_asset_url('../../js/code-block.js'),{"type":"module"}) }}
 
-{#- Quick check to tell if all tabs are unique for id purposes -#}
-{%- set uniqueTabs = module.tab|unique -%}
-{%- set isUnique = uniqueTabs is containingall module.tab and uniqueTabs|length == module.tab|length -%}
 {%- set langMap  =
   {
     "css": "CSS",
@@ -22,29 +17,11 @@
   }
 -%}
 
-{#- need To revisit isUnique currently always returns false, does not have significant negative effect -#}
-{#
-<div class="developers-code-block developers-code-block--multi-syntax cb--{{name|cut('module_')}}" data-tabs="{{ uniqueTabs|length }}">
-  <div class="developers-code-block__tabs">
-    <div class="developers-code-block__tablist" role="tablist" aria-label="Code Example">
-      {%- for tab in module.tab -%}
-        {%- set tabDisplayName = langMap[tab.language] -%}
-        <button role="tab" aria-selected="{{true if loop.index == 1 else false}}" id="cb--{{name|cut('module_')}}__b{{tab.language if isUnique else tab.language+loop.index}}" aria-controls="cb--{{name|cut('module_')}}__t{{tab.language if isUnique else tab.language+loop.index}}">{{tabDisplayName}}</button>
-      {%- endfor -%}
-    </div>
-    {%- for tab in module.tab -%}
-    <div role="tabpanel" {{'hidden="hidden"' if loop.index != 1 }} id="cb--{{name|cut('module_')}}__t{{tab.language if isUnique else tab.language+loop.index}}" aria-labelledby="cb--{{name|cut('module_')}}__b{{tab.language if isUnique else tab.language+loop.index}}">
-      <pre class="{{ module.useLineNumbers ? 'line-numbers' : null }}"><code class="language-{{ tab.language }}">{{ tab.code_snippet|escape|escape_jinjava }}</code></pre>
-    </div>
-    {%- endfor -%}
-  </div>
-</div>
-#}
 <code-block data-line-numbers="{{ module.useLineNumbers }}">
   {%- for tab in module.tab -%}
-  {%- set tabDisplayName = langMap[tab.language] -%}
-  <code-tab data-label="{{tabDisplayName}}" data-language="{{ tab.language }}" data-escaped="true">
-    {{ tab.code_snippet|escape|escape_jinjava }}
-  </code-tab>
+    {%- set tabDisplayName = langMap[tab.language] -%}
+    <code-tab data-label="{{tabDisplayName}}" data-language="{{ tab.language }}" data-escaped="true">
+      {{ tab.code_snippet|escape|escape_jinjava }}
+    </code-tab>
   {%- endfor -%}
 </code-block>
