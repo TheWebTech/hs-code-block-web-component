@@ -31,6 +31,8 @@ if(window.hsInEditor){
   document.querySelector('head').appendChild(template);
 }
 
+
+
 // change string into escaped characters to prevent rendering DOM elements. This is used for the contents of the code blocks if the user doesn't specify that the content is escaped.
 function encode (str) { 
       var buf = [];
@@ -39,8 +41,9 @@ function encode (str) {
       }
       return buf.join("");
 }
-  // load stylesheet to be used by the web component, used for syntax highlighting.
+  // load Prism to be used by the web component, used for syntax highlighting.
   import syntaxHighlighting from "{{ get_asset_url('../css/components/prism.css')}}" assert { type: "css" }; 
+  import "{{ get_asset_url('../js/prism.js') }}";
   
   
   // Register <code-tab> element
@@ -100,15 +103,23 @@ function encode (str) {
       // <slot> determines where <code-tab> elements will be rendered.
       shadowRoot.innerHTML = `
         <style>
+          :host{
+            --activeColor: rgb(153, 153, 153);
+            --inactiveColor: rgb(45, 45, 45);
+          }
           .code-block__tablist button{
             appearance:none;
             border-width:0;
-            background:rgb(153, 153, 153);
+            background:var(--activeColor);
             padding:15px;
             color:#fff;
+            border-right:1px solid var(--activeColor);
+          }
+          .code-block__tablist button:last-of-type{
+            border-right:0;
           }
           .code-block__tablist button[aria-selected="true"]{
-            background:rgb(45, 45, 45);
+            background:var(--inactiveColor);
           }
         </style>
         <section class="code-block">
