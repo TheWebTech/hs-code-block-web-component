@@ -36,15 +36,22 @@ Each of these attributes are passed as data attributes since these are custom at
 </code-tab>
 ```
 
-### How they are used together
+### How the two elements are used together
 Example of how you'd use this:
 ``` html
-    <code-block data-line-numbers="true">
-        <code-tab data-language="HTML">
-            <h1>Your HTML here. Any HTML or HubL should be escaped</h1>
-        </code-tab>
-    </code-block>
+<code-block data-line-numbers="true">
+    <code-tab data-language="HTML">
+        <h1>Your HTML here. Any HTML or HubL should be escaped</h1>
+    </code-tab>
+</code-block>
 ```
+
+Anywhere you want this code block to render you need to load the JavaScript file. When loading on pages hosted on CMS Hub, use `{{ require_js(get_asset_url('../../js/code-block.js'),{"type":"module"}) }}`. The require_js function ensure that the JavaScript is only loaded once per page.
+
+### Under the hood how does the code block work?
+Under the hood the JS file that registers and renders the web components is [code-block.js](/src/js/code-block.js). This file holds the definitions for both the code-block and code-tab elements. It handles all of the tabbing functionality and passes data needed for the syntax highlighting to the shadow DOM div element that gets processed. This file also contains the CSS for the Shadow DOM elements to keep it self contained - with an exception of the syntax highlighting itself.
+
+The syntax highlighting itself is performed by [Prism.js](/src/js/prism.js). [PrismJS is an open source syntax highlighter](https://github.com/PrismJS/prism). Prism takes the code that's pasted in and converts it to HTML elements that can be styled. We're using one of the [Prism themes for the styling](/src/css/components/prism.css). You'll notice if you open the Prism JavaScript file we have `{% raw %}` tags being used, this tells the HubSpot renderer to ignore anything that resembles HubL within this code. 
 
 ## Use inside custom modules
 In the modules folder we've provided an example plug and play module that uses the web component to create the code blocks. Using module fields the content creator has a nice interface for changing settings in the code block, we can also automatically escape the code for them.
