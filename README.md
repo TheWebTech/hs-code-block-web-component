@@ -126,8 +126,12 @@ If you want to control it on an individual post level though, giving the post au
 ```
 Place that module in your blog post template. Now you have the ability to toggle the script on/off as needed per post.
 
+Wherever you need to place your code block in the content of your blog post, use the insert > embed code feature and paste in the HTML for the code-block.
+
 [Included in the web component is detection of if you're viewing the code block from the page editor](https://github.com/TheWebTech/hs-code-block-web-component/blob/c92ceccebea77f867d2b75f52bf2aa7dc78d6415/src/js/code-block.js#L1-L32), this enables the code block to be partially styled in the editor to give the post author a nice experience. It also displays a couple of messages in the preview.
 * A warning that you should always escape html before pasting it in to the code block, this prevents those elements from being temporarily rendered to the DOM. The web component DOES have the ability to convert unescaped code to escaped code but there would be a moment where the DOM content would be shown.
 * A note on hover just to let you know that what you see in the editor does not perfectly match the live page.
 
-If you need to display HubL or code that is similar in syntax to HubL it's encouraged that you use `{% raw %}` to ensure that HubSpot does not process that HubL.
+_Note: The styling of the web component while in the editor is dependent on HubSpot's editor code. Over time this code will change and could cause that special styling within the editor to not work. This doesn't affect the live page, so the trade off of a nicer editing experience feels worth it._
+
+Reminder: If you need to display HubL or code that is similar in syntax to HubL it's encouraged that you use `{% raw %}` to ensure that HubSpot does not process that HubL.
