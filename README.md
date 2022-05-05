@@ -108,6 +108,26 @@ The effect this achieves is that the layout doesn't significantly shift when the
 
 
 ## Use inside custom modules
-In the modules folder we've provided an example plug and play module that uses the web component to create the code blocks. Using module fields the content creator has a nice interface for changing settings in the code block, we can also automatically escape the code for them.
+In the modules folder we've provided an example plug and play module that uses the web component to create the code blocks. Using module fields the content creator has a nice interface for changing settings in the code block, we can also automatically escape the code for them. The key is using `require_js` to load the webcomponent JS only when the module needs it.
+``` Jinja
+{{ require_js(get_asset_url('../../js/code-block.js'),{"type":"module"}) }}
+```
 
+## Use inside blog posts
+The key thing you need to display a code block in your blog post is to require the JavaScript file. You do this in the same way you do for modules, but instead you use the `require_js` statement in your template. If you know your blog will use code blocks a lot, it's maybe okay to simply have the require statement right in your blog post template.
+``` Jinja
+{{ require_js(get_asset_url('../../js/code-block.js'),{"type":"module"}) }}
+```
+If you want to control it on an individual post level though, giving the post author control - the best thing to do is create a custom module that will load on the page. The module itself only needs to have a boolean field "Use code blocks" then conditionally load the JS based on that field.
+``` Jinja
+{% if module.enable_code_blocks %}
+    {{ require_js(get_asset_url('../../js/code-block.js'),{"type":"module"}) }}
+{% endif %}
+```
+Place that module in your blog post template. Now you have the ability to toggle the script on/off as needed per post.
 
+[Included in the web component is detection of if you're viewing the code block from the page editor](https://github.com/TheWebTech/hs-code-block-web-component/blob/c92ceccebea77f867d2b75f52bf2aa7dc78d6415/src/js/code-block.js#L1-L32), this enables the code block to be partially styled in the editor to give the post author a nice experience. It also displays a couple of messages in the preview.
+* A warning that you should always escape html before pasting it in to the code block, this prevents those elements from being temporarily rendered to the DOM. The web component DOES have the ability to convert unescaped code to escaped code but there would be a moment where the DOM content would be shown.
+* A note on hover just to let you know that what you see in the editor does not perfectly match the live page.
+
+If you need to display HubL or code that is similar in syntax to HubL it's encouraged that you use `{% raw %}` to ensure that HubSpot does not process that HubL.
