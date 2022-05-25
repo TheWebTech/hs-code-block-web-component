@@ -37,6 +37,27 @@ Each of these attributes are passed as data attributes since these are custom at
     <h1>Your HTML here. Any HTML or HubL should be escaped</h1>
 </code-tab>
 ```
+#### Supported development languages
+Your prism.js and css file is what determines what languages the code block supports. Out of the box this web component supports:
+* css
+* html
+* js
+* json
+* graphql
+* xml
+* svg
+* atom
+* rss
+* mathml
+* ssml
+* c-like
+* bash + shell
+* web app manifest
+* django/jinja2 (HubL)
+
+Should you need other languages it's somewhat trivial to add them. Simply swap the prism.js and prism.css file with a new version from prismjs.com. You can get the current configuration from the prism.js file in this project. Do note if you update versions of Prism itself you may need to make code changes to your web component if there were breaking changes.
+
+In this project we may expand the languages that are added by default over time but we will attempt to do so slowly as every language adds to the file size.
 
 ### How the two elements are used together
 Example of how you'd use this:
