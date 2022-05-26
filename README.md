@@ -149,6 +149,8 @@ Place that module in your blog post template. Now you have the ability to toggle
 
 Wherever you need to place your code block in the content of your blog post, use the insert > embed code feature and paste in the HTML for the code-block. When you need to edit your code examples opening the source code view for the full post - will enable you to get syntax highlighting in the editor, so that's the best way to tweak after the fact.
 
+Note: If your blog posts are automatically sent as emails, include the `<!--readmore-->` anywhere before the first code block. Emails don't support JavaScript so your code block won't be rendered in the email. You could try using CSS styling alone - like we do to prevent FOUC but email clients are trickier and getting it to display in a useful way may be hard.
+
 [Included in the web component is detection of if you're viewing the code block from the page editor](https://github.com/TheWebTech/hs-code-block-web-component/blob/c92ceccebea77f867d2b75f52bf2aa7dc78d6415/src/js/code-block.js#L1-L32), this enables the code block to be partially styled in the editor to give the post author a nice experience. It also displays a couple of messages in the preview.
 * A warning that you should always escape html before pasting it in to the code block, this prevents those elements from being temporarily rendered to the DOM. The web component DOES have the ability to convert unescaped code to escaped code but there would be a moment where the DOM content would be shown.
 * A note on hover just to let you know that what you see in the editor does not perfectly match the live page.
