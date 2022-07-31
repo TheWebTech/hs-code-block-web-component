@@ -39,6 +39,14 @@
     "id": "useLineNumbers"
   },
   {
+    "default": "",
+    "label": "Highlight specific line numbers",
+    "helptext":"You can highlight ranges of numbers, individual lines, and a combination of both. Ex: 1-2, 5, 9-20",
+    "type": "text",
+    "name": "highlightLineNumbers",
+    "id": "highlightLineNumbers"
+  },
+  {
     "default": false,
     "label": "Show selected language label",
     "type": "boolean",
