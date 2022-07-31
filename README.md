@@ -30,6 +30,7 @@ The code tab has three attributes:
 * `language` - determines the which syntax highlighting is used.
 * `label` - The label for the tab
 * `is-escaped` - by default is-escaped is false. This attribute determines whether the module will convert any HTML inside the element to escaped HTML. You should never pass HTML that isn't already escaped. The HTML will be temporarily rendered.
+* `highlight` - used for highlighting specific line numbers in code blocks.
 
 Each of these attributes are passed as data attributes since these are custom attributes.
 ``` html
@@ -70,6 +71,20 @@ Example of how you'd use this:
 ```
 
 Anywhere you want this code block to render you need to load the JavaScript file. When loading on pages hosted on CMS Hub, use `{{ require_js(get_asset_url('../../js/code-block.js'),{"type":"module"}) }}`. The require_js function ensure that the JavaScript is only loaded once per page.
+
+#### Highlight specific line numbers
+Sometimes you want to highlight specific line numbers in a code tab so you scan show code within the larger context of how it will be used.
+
+To do this, on your code-tab element add a data-highlight attribute. The highlight feature supports:
+* A single number refers to the line with that number
+* Ranges are denoted by two numbers, separated with a hyphen (-)
+* Multiple line numbers or ranges are separated by commas.
+
+Examples:
+* `5` - The 5th line
+* `11-5` - Lines 1 through 5
+* `1,4` - Line 1 and line 4
+* `1-2, 5, 9-20` - Lines 1 through 2, line 5, lines 9 through 20
 
 ### Under the hood how does the code block work?
 Under the hood the JS file that registers and renders the web components is [code-block.js](/src/js/code-block.js). This file holds the definitions for both the code-block and code-tab elements. It handles all of the tabbing functionality and passes data needed for the syntax highlighting to the shadow DOM div element that gets processed. This file also contains the CSS for the Shadow DOM elements to keep it self contained - with an exception of the syntax highlighting itself.
