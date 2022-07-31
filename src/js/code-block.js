@@ -60,6 +60,7 @@ function encode (str) {
       let language = this.getAttribute("data-language");
       let lineNumbers = this.getAttribute("data-line-numbers") == "false" ?  "no-line-numbers": "line-numbers";
       let isEscaped = this.getAttribute("data-escaped");
+      let linesToHighlight = this.getAttribute("data-highlight");
       // take whatever code is between <code-tab> and </code-tab> and escape it unless the data-escaped attribute is set to true.
       let code;
       if(isEscaped == "true"){
@@ -76,7 +77,7 @@ function encode (str) {
           :host code[class*="language-"],:host pre[class*="language-"]{margin-top:0;}
         </style>
         <div class="code-snippet">
-            <pre class="${lineNumbers}"><code class="language-${language}">${code}</code></pre>
+            <pre class="${lineNumbers}" data-line="${linesToHighlight}"><code class="language-${language}">${code}</code></pre>
         </div>
         `;
         // once the web component is initialized tell Prism to syntax highlight the code blocks.
