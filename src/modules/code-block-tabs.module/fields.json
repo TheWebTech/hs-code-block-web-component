@@ -36,7 +36,14 @@
     "choices" : [ [ "css", "CSS" ], [ "html", "HTML" ], [ "jinja2", "HubL" ], [ "js", "JavaScript" ], [ "json", "JSON" ], [ "yaml", "YAML" ], [ "shell", "Shell script" ], [ "php", "PHP" ], [ "node", "Node.js" ], [ "ruby", "Ruby" ], [ "java", "Java" ], [ "py", "Python" ] ],
     "type" : "choice",
     "default" : "jinja2"
-  } ],
+  }, {
+    "default": "",
+    "label": "Highlight specific line numbers",
+    "helptext":"You can highlight ranges of numbers, individual lines, and a combination of both. Ex: 1-2, 5, 9-20",
+    "type": "text",
+    "name": "highlightLineNumbers",
+    "id": "highlightLineNumbers"
+  }, ],
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",

@@ -20,7 +20,7 @@
 <code-block data-line-numbers="{{ module.useLineNumbers }}">
   {%- for tab in module.tab -%}
     {%- set tabDisplayName = langMap[tab.language] -%}
-    <code-tab data-label="{{tabDisplayName}}" data-language="{{ tab.language }}" data-escaped="true">
+    <code-tab data-label="{{tabDisplayName}}" data-language="{{ tab.language }}" data-escaped="true" data-highlight="{{ tab.highlightLineNumbers }}">
       {{ tab.code_snippet|escape|escape_jinjava }}
     </code-tab>
   {%- endfor -%}
