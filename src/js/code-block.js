@@ -61,6 +61,9 @@ function encode (str) {
       let lineNumbers = this.getAttribute("data-line-numbers") == "false" ?  "no-line-numbers": "line-numbers";
       let isEscaped = this.getAttribute("data-escaped");
       let linesToHighlight = this.getAttribute("data-highlight");
+      language = language.replace("HubL","jinja2");
+      language = language.toLowerCase();
+
       // take whatever code is between <code-tab> and </code-tab> and escape it unless the data-escaped attribute is set to true.
       let code;
       if(isEscaped == "true"){
