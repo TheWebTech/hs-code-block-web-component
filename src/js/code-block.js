@@ -42,7 +42,7 @@ function encode (str) {
       return buf.join("");
 }
   // load Prism to be used by the web component, used for syntax highlighting.
-  import syntaxHighlighting from "{{ get_asset_url('../css/components/prism.css')}}" assert { type: "css" }; 
+  // import syntaxHighlighting from "{{ get_asset_url('../css/components/prism.css')}}" assert { type: "css" }; 
   import "{{ get_asset_url('../js/prism.js') }}";
   
   
@@ -55,7 +55,7 @@ function encode (str) {
 
     connectedCallback(){
       // pass Syntax highlighting stylesheets to be used in the ShadowDOM for <code-tab> elements.
-      this.shadowRoot.adoptedStyleSheets = [syntaxHighlighting];
+      // this.shadowRoot.adoptedStyleSheets = [syntaxHighlighting];
       // Get attributes from <code-tab> element needed for prism and escaping.
       let language = this.getAttribute("data-language");
       let lineNumbers = this.getAttribute("data-line-numbers") == "false" ?  "no-line-numbers": "line-numbers";
@@ -76,6 +76,8 @@ function encode (str) {
       // The Shadow DOM HTML for a <code-tab> element.
       this.shadowRoot.innerHTML = `
         <style>
+          /* fallback for Firefox and Safari not supporting import assertion */
+          @import "{{ get_asset_url('../css/components/prism.css')}}";
           :host{display:block;}
           :host code[class*="language-"],:host pre[class*="language-"]{margin-top:0;}
         </style>
