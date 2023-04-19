@@ -150,6 +150,9 @@ In the modules folder we've provided an example plug and play module that uses t
 ```
 
 ## Use inside blog posts
+<details><summary>HubSpot now supports dragging and dropping modules in blog posts, and that's the recommended way to add code blocks to posts. The old way should still work fine if you need it though.</summary>
+This is the old way to use them in blog posts.
+
 The key thing you need to display a code block in your blog post is to require the JavaScript file. You do this in the same way you do for modules, but instead you use the `require_js` statement in your template. If you know your blog will use code blocks a lot, it's maybe okay to simply have the require statement right in your blog post template.
 ``` Jinja
 {{ require_js(get_asset_url('../../js/code-block.js'),{"type":"module"}) }}
@@ -166,6 +169,8 @@ Wherever you need to place your code block in the content of your blog post, use
 
 Note: If your blog posts are automatically sent as emails, include the `<!--readmore-->` anywhere before the first code block. Emails don't support JavaScript so your code block won't be rendered in the email. You could try using CSS styling alone - like we do to prevent FOUC but email clients are trickier and getting it to display in a useful way may be hard.
 
+
+
 [Included in the web component is detection of if you're viewing the code block from the page editor](https://github.com/TheWebTech/hs-code-block-web-component/blob/c92ceccebea77f867d2b75f52bf2aa7dc78d6415/src/js/code-block.js#L1-L32), this enables the code block to be partially styled in the editor to give the post author a nice experience. It also displays a couple of messages in the preview.
 * A warning that you should always escape html before pasting it in to the code block, this prevents those elements from being temporarily rendered to the DOM. The web component DOES have the ability to convert unescaped code to escaped code but there would be a moment where the DOM content would be shown.
 * A note on hover just to let you know that what you see in the editor does not perfectly match the live page.
@@ -173,3 +178,4 @@ Note: If your blog posts are automatically sent as emails, include the `<!--read
 _Note: The styling of the web component while in the editor is dependent on HubSpot's editor code. Over time this code will change and could cause that special styling within the editor to not work. This doesn't affect the live page, so the trade off of a nicer editing experience feels worth it._
 
 Reminder: If you need to display HubL or code that is similar in syntax to HubL it's encouraged that you use `{% raw %}` to ensure that HubSpot does not process that HubL.
+</details>
