@@ -13,8 +13,11 @@
   }
 -%}
 {%- set tabLang =  langMap[module.language] -%}
+{%- set tabLabel = module.showLangTab ? tabLang : module.tab_label -%}
+
+
 <code-block data-line-numbers="{{ module.useLineNumbers }}">
-  <code-tab data-language="{{ tabLang }}" data-escaped="true" data-highlight="{{ module.highlightLineNumbers }}">
+  <code-tab data-label="{{tabLabel}}" data-language="{{ tabLang }}" data-escaped="true" data-highlight="{{ module.highlightLineNumbers }}">
     {{ module.code_snippet|escape|escape_jinjava }}
   </code-tab>
 </code-block>
