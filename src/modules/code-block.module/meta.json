@@ -3,7 +3,7 @@
   "external_js": [],
   "global": false,
   "help_text": "",
-  "host_template_types": ["PAGE"],
+  "host_template_types": ["PAGE","BLOG_POST"],
   "icon": "code",
   "js_assets": [],
   "label": "Code",
